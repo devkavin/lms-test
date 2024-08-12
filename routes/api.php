@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CourseController;
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
@@ -27,4 +28,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::put('/courses/{id}/enroll', [CourseController::class, 'enroll']); // update course
     Route::put('/courses/{id}/unenroll', [CourseController::class, 'unenroll']); // update course
+
+
 });
