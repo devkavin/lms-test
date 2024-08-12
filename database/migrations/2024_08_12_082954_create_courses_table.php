@@ -11,8 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+        // title, description, and category
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('instructor_id')->unsigned();
+            $table->foreign('instructor_id')->references('id')->on('users');
+            $table->string('title');
+            $table->text('description');
+            $table->string('category');
             $table->timestamps();
         });
     }

@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/courses', [CourseController::class, 'store']);
     Route::get('/courses/{id}', [CourseController::class, 'show']);
     Route::put('/courses/{id}', [CourseController::class, 'update']); // update course
+    Route::delete('/courses/{id}', [CourseController::class, 'destroy']); // delete course
 
     Route::put('/courses/{id}/enroll', [CourseController::class, 'enroll']); // update course
     Route::put('/courses/{id}/unenroll', [CourseController::class, 'unenroll']); // update course
