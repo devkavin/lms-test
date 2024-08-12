@@ -11,6 +11,7 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::all();
+
         return response()->json([
             'courses' => $courses
         ], 200);
@@ -57,7 +58,7 @@ class CourseController extends Controller
 
         return response()->json([
             'course' => $course
-        ], 200);
+        ], 201); // 201 for succesfully creating a resource
     }
 
 
@@ -93,7 +94,7 @@ class CourseController extends Controller
 
         return response()->json([
             'course' => $course
-        ], 200);
+        ], 200); // 200 for succesfully updating a resource
     }
 
     public function enroll($id)
@@ -178,6 +179,6 @@ class CourseController extends Controller
 
         return response([
             'message' => 'Course Deleted'
-        ], 200);
+        ], 204); // 204 for succesfully deleting a resource (no content)
     }
 }
