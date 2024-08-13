@@ -29,6 +29,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::put('/courses/{id}/enroll', [CourseController::class, 'enroll']); // update course
     Route::put('/courses/{id}/unenroll', [CourseController::class, 'unenroll']); // update course
+    Route::get('/courses/{id}/is_enrolled', [CourseController::class, 'isEnrolled']); // update course
+
 
 
 });

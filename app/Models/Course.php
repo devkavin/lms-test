@@ -20,4 +20,9 @@ class Course extends Model
     {
         return $this->belongsToMany(User::class, 'course_user', 'course_id', 'student_id');
     }
+
+    public function isEnrolled($studentId)
+    {
+        return $this->students()->where('student_id', $studentId)->exists();
+    }
 }

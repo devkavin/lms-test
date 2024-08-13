@@ -28,7 +28,7 @@ class CourseController extends Controller
         }
 
         return response()->json([
-            'course' => $course
+            'course' => $course->with('students')->get()
         ], 200);
     }
 
@@ -152,6 +152,28 @@ class CourseController extends Controller
 
         return response([
             'message' => 'You have unenrolled from the course'
+        ], 200);
+    }
+
+    // is enrolled
+    public function isEnrolled($id)
+    {
+        $course = Course::find($id);
+
+        if (!$course) {
+            return response([
+                'message' => "Course not found"
+            ], 404);
+        }
+
+        if ($course->students->contains(Auth::id())) {
+            return response([
+                'is_enrolled' => true
+            ], 200);
+        }
+
+        return response([
+            'is_enrolled' => false
         ], 200);
     }
 
