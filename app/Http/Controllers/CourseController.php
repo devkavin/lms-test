@@ -28,7 +28,7 @@ class CourseController extends Controller
         }
 
         return response()->json([
-            'course' => $course->with('students')->get()
+            'course' => $course
         ], 200);
     }
 
