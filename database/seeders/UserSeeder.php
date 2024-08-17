@@ -14,6 +14,11 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('password'), // password is 'password'
+            ],
+            [
                 'name' => 'Instructor James',
                 'email' => 'instructorjames@gmail.com',
                 'password' => bcrypt('password'), // password is 'password'
@@ -28,6 +33,9 @@ class UserSeeder extends Seeder
         foreach ($users as $user) {
             \App\Models\User::create($user);
         }
+
+        $admin = \App\Models\User::where('email', 'admin@gmail.com')->first();
+        $admin->assignRole('admin');
 
         $instructor = \App\Models\User::where('email', 'instructorjames@gmail.com')->first();
         $instructor->assignRole('instructor');
